@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 const   Navbar = ()=> {
     return (
       <>
@@ -17,9 +18,12 @@ const   Navbar = ()=> {
           {/* Center nav links (visible on large screens) */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal space-x-4 text-lg">
-              <li><a>Home</a></li>
+              {/* <li><a>Home</a></li>
               <li><a>About</a></li>
-              <li><a>Blog</a></li>
+              <li><a>Blog</a></li> */}
+               <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/blog">Blog</Link></li>
               <li>
                 <details>
                   <summary>Explore</summary>

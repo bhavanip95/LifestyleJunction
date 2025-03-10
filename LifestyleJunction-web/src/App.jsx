@@ -8,6 +8,9 @@ import './app.css'
 // Pages/Components
 import Categories from './components/Categories';
 import Article from './components/Article';
+import { About } from './components/About';
+import Blog from './components/Blog';
+import { ReadMoreArticle } from './components/ReadMoreArticle';
 
 function App() {
   return (
@@ -18,7 +21,9 @@ function App() {
           
           <Layout />
           }>
-
+ <Route path="about" element={<About />} />
+ <Route path="blog" element={<Blog />} />
+ <Route path="ReadMoreArticle" element={<ReadMoreArticle />} />
             
           {/* Index route => renders Categories by default */}
           <Route index element={<Categories />} />

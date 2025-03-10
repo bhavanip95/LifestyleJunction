@@ -10,6 +10,7 @@ export default function DefaultLayout() {
     <>
       {/* Header / Navbar */}
       <Navbar />
+      
       {/* Main content area */}
       <Outlet/>
       <Footer />
