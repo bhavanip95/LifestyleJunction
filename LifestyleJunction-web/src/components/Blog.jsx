@@ -13,7 +13,7 @@ function Blog() {
                     Latest Community Blogs
                   </li>
       
-                  {/* Blog 1: 20 Hair Masks */}
+                  {/* Blog 1: 20 Hair Masks test
                   <li className="list-row">
                     {/* Thumbnail Image */}
                     <div>
