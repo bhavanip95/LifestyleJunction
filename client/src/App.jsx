@@ -11,6 +11,7 @@ import Article from './components/Article';
 import { About } from './components/About';
 import Blog from './components/Blog';
 import { ReadMoreArticle } from './components/ReadMoreArticle';
+import CreateBlogForm from './components/CreateBlogForm';
 
 function App() {
   return (
@@ -24,12 +25,15 @@ function App() {
  <Route path="about" element={<About />} />
  <Route path="blog" element={<Blog />} />
  <Route path="ReadMoreArticle" element={<ReadMoreArticle />} />
+ <Route path="post-blog"   element={ <CreateBlogForm/>} />
+
             
           {/* Index route => renders Categories by default */}
           <Route index element={<Categories />} />
 
           {/* Example route for an Article page, using a param for category */}
-          <Route path="articles/:category" element={<Article />} />
+          <Route path="/articles/:category/:subCategory" element={<Article />} />
+
 
           {/* You can add more nested routes as needed */}
         </Route>
