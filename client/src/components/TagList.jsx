@@ -1,45 +1,26 @@
 import React from "react";
 
-function TagList({ tags }) {
-  // Possible badge color classes
-  const badgeClasses = [
-    "badge-primary",
-    "badge-secondary",
-    "badge-accent",
-    "badge-neutral",
-    "badge-info",
-    "badge-success",
-    "badge-warning",
-    "badge-error",
-  ];
-
-  // Helper function to pick a random class
-  const getRandomBadgeClass = () => {
-    const randomIndex = Math.floor(Math.random() * badgeClasses.length);
-    return badgeClasses[randomIndex];
-  };
-
+function TagList({ tags, selectedTag, onTagClick }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "0.5rem", // space between badges
-       
-      }}
-    >
-      {tags.map((tag, index) => (
-        <div
-          key={index}
-          className={`badge badge-dash ${getRandomBadgeClass()}`}
-          style={{
-            padding: "0.5rem 1rem", // add some internal padding
-          }}
-        >
-          {tag}
-        </div>
-      ))}
+    <div className="flex flex-wrap gap-2">
+      {tags.map((tag, index) => {
+        const isSelected = selectedTag === tag;
+        return (
+          <button
+            key={index}
+            onClick={() => onTagClick && onTagClick(isSelected ? null : tag)}
+            className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all duration-200 cursor-pointer
+              ${isSelected
+                ? "bg-pink-500 text-white border-pink-500 shadow-md"
+                : "bg-pink-100 text-pink-700 border-pink-300 hover:bg-pink-500 hover:text-white hover:border-pink-500 hover:shadow-md"
+              }`}
+          >
+            {tag}
+          </button>
+        );
+      })}
     </div>
   );
 }
-export default TagList
+
+export default TagList;

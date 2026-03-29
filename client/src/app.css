@@ -2,33 +2,30 @@
 @plugin "daisyui" {
   themes: all;
 }
-/* Style the Google Translate Dropdown */
+
+/* ── Google Translate ───────────────────────────────────────────────────────── */
 #google_translate_element {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Hide the ugly Google Translate toolbar */
 .goog-te-banner-frame {
   display: none !important;
 }
 
-/* Style the dropdown */
 .goog-te-gadget {
   font-size: 14px !important;
   color: white !important;
 }
 
-/* Remove the "Powered by Google" text */
 .goog-te-gadget span {
   display: none !important;
 }
 
-/* Style the dropdown box */
 .goog-te-combo {
-  background-color: #1f2937 !important; /* Dark background */
-  color: white !important; /* White text */
+  background-color: #1f2937 !important;
+  color: white !important;
   border: 1px solid #ffffff50 !important;
   padding: 5px;
   border-radius: 5px;
@@ -36,47 +33,44 @@
   cursor: pointer;
 }
 
-/* Change dropdown arrow color */
 .goog-te-combo::after {
   color: white !important;
 }
 
-/* Adjust positioning */
 .goog-te-gadget-simple {
   border: none !important;
   background: transparent !important;
   padding: 5px;
 }
-/* src/app.css */
-/* ... your existing styles ... */
 
-.text-rotate-container {
-  height: 1.2em; /* This must match the line-height of your text */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
+/* ── Scrollbar hide ─────────────────────────────────────────────────────────── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
 
-.text-rotate-inner {
+/* ── Bottom sheet slide-up ──────────────────────────────────────────────────── */
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+.animate-slide-up { animation: slide-up 0.28s ease-out; }
+
+/* ── Navbar rotating words ──────────────────────────────────────────────────── */
+/* steps(1) snaps each word in cleanly — no easing glitch, all 6 words visible */
+.rotate-words {
   display: flex;
   flex-direction: column;
-  animation: rotate-lifestyle 12s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+  animation: rotate-words 9s steps(1) infinite;
 }
 
-/* Each item must be exactly 1.2em tall to align with the container */
-.text-rotate-inner div {
-  height: 1.2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@keyframes rotate-lifestyle {
-  0%, 12% { transform: translateY(0); }
-  16%, 28% { transform: translateY(-16.66%); }
-  32%, 44% { transform: translateY(-33.33%); }
-  48%, 60% { transform: translateY(-50%); }
-  64%, 76% { transform: translateY(-66.66%); }
-  80%, 92% { transform: translateY(-83.33%); }
-  100% { transform: translateY(0); }
+@keyframes rotate-words {
+  0%        { transform: translateY(0); }
+  16.6667%  { transform: translateY(calc(-1 * 1.4em)); }
+  33.3333%  { transform: translateY(calc(-2 * 1.4em)); }
+  50%       { transform: translateY(calc(-3 * 1.4em)); }
+  66.6667%  { transform: translateY(calc(-4 * 1.4em)); }
+  83.3333%  { transform: translateY(calc(-5 * 1.4em)); }
+  100%      { transform: translateY(0); }
 }

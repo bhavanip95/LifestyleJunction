@@ -2,39 +2,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
 
+const WORDS = ["🌿 GLOW", "🍲 COOK", "🧘 CALM", "🎨 CREATE", "💰 SAVE", "✈️ TRAVEL"];
+
 const Navbar = () => {
   return (
     <div data-theme="dracula">
-      <header className="flex justify-between items-center py-4 px-4 md:px-8 lg:px-16 border-b border-gray-800">
-        
-        {/* 3D Brand Name - Acts as the "Home" button */}
-        <Link to="/" className="hover-3d text-3xl md:text-4xl font-bold tracking-tight">
-          Lifestyle Junction
-        </Link>
+      <header className="sticky top-0 z-30 flex justify-between items-center py-4 px-4 md:px-8 lg:px-16 border-b border-gray-800">
 
-            <section  className="text-center mb-16 py-6  rounded-3xl shadow-xl">
-                  <h1 className="text-3xl md:text-3xl font-bold mb-4">
-                    Everything you need to...
-                  </h1>
-                  
-                  {/* Rotation Container */}
-                  <div className="text-rotate-container text-3xl md:text-3xl font-extrabold text-primary">
-                    <div className="text-rotate-inner">
-                      <div>🌿 GLOW</div>
-                      <div>🍲 COOK</div>
-                      <div>🧘 CALM</div>
-                      <div>🎨 CREATE</div>
-                      <div>💰 SAVE</div>
-                      <div>✈️ TRAVEL</div>
-                    </div>
-                  </div>
-        
-                  <p className="mt-8 text-lg opacity-80 max-w-2xl mx-auto">
-                    Your daily guide to a better, more creative, and organized lifestyle.
-                  </p>
-                </section>
+        {/* Brand + rotating word — all on ONE line */}
+        <div className="flex items-center gap-3">
+          <Link to="/" className="text-2xl md:text-3xl font-bold tracking-tight whitespace-nowrap">
+            Lifestyle Junction
+          </Link>
 
-    
+          <span className="text-gray-500 text-lg hidden sm:block">•</span>
+
+          <div className="hidden sm:flex flex-col items-start overflow-hidden" style={{ height: "1.4em" }}>
+            <div className="rotate-words text-base md:text-lg font-extrabold text-primary">
+              {WORDS.map((w, i) => (
+                <div key={i} style={{ height: "1.4em", display: "flex", alignItems: "center" }}>{w}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Language switcher */}
         <div className="flex items-center">
           <LanguageSwitcher />
         </div>
