@@ -1,4 +1,6 @@
 require('dotenv').config();
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors'); // Add this
@@ -8,9 +10,9 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' 
-    ? 'https://lifestylejunction.in' 
-    : 'http://localhost:3000',
+  origin: process.env.NODE_ENV === 'production'
+    ? ['https://lifestylejunction.in', 'https://www.lifestylejunction.in']
+    : ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'],
   credentials: true
 };
 
